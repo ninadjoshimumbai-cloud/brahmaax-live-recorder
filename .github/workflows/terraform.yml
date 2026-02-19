@@ -22,7 +22,7 @@ jobs:
         run: pip install requests
 
       - name: Run recorder
-        run: python brahmaax_live_feed.py
+        run: run: python recorder.py
 
       - name: Commit candle data
         run: |
