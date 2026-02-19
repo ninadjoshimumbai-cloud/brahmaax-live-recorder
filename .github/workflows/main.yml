@@ -10,24 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: '3.11'
 
       - name: Install dependencies
         run: pip install requests
 
-      - name: Run recorder
-        run: python brahmaax_live_feed.py
-
-      - name: Commit candle data
-        run: |
-          git config --global user.name "brahmaax-cloud"
-          git config --global user.email "cloud@brahmaax.ai"
-          git add database/brahmaax_candles.csv
-          git commit -m "Cloud candle update" || echo "No changes"
-          git push
+      - name: Run BRAHMAAX Recorder
+        run: python recorder.py
